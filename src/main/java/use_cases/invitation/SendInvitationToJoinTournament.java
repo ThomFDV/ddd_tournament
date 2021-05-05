@@ -1,9 +1,6 @@
 package use_cases.invitation;
 
-import model.Invitation;
-import model.Team;
-import model.Tournament;
-import model.User;
+import model.*;
 
 import java.util.Optional;
 
@@ -11,7 +8,7 @@ public class SendInvitationToJoinTournament {
     public Invitation SendInvitation(
             String tournamentId,
             String receiverId,
-            Enum receiverType,
+            ReceiverType receiverType,
             String senderId,
             Optional<String> invitationMessage
     ) {
@@ -19,7 +16,7 @@ public class SendInvitationToJoinTournament {
         Tournament tournament = TournamentRepository.getTournament(tournamentId);
         invitation.setTournament(tournament);
 
-        if (receiverType == Enum.TEAM) {
+        if (receiverType == ReceiverType.TEAM) {
             Team team = TeamRepository.getTeam(receiverId);
             invitation.setReceiver(team);
         } else {
