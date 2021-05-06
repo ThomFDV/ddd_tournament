@@ -35,7 +35,7 @@ public class CreateTournament {
         }
 
         Tournament tournament = new Tournament();
-        tournament.setAdmin(admin);
+        tournament.setAdmin(admin.getId());
         tournament.setName(tournamentName);
         tournament.setStartDate(startDate);
         tournament.setEndDate(endDate);

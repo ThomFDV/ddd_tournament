@@ -2,8 +2,10 @@ package model;
 
 public class Invitation {
 
-    public void setTournament(Tournament tournament) {
+    private Tournament tournament;
 
+    public void setTournament(Tournament tournament) {
+        this.tournament = tournament;
     }
 
     public void setReceiver(Object receiver) {
@@ -20,6 +22,10 @@ public class Invitation {
 
     public void send() {
 
+    }
+
+    public Tournament getTournament() {
+        return this.tournament;
     }
 
 }

@@ -12,7 +12,7 @@ public class MockUserRepository implements UserRepository {
 
     public MockUserRepository() { users = new ArrayList<User>();}
 
-    public void addUser(User user){users.add(user);}
+    public void add(User user){users.add(user);}
 
     @java.lang.Override
     public Optional<User> getUser(String id) {

@@ -5,14 +5,14 @@ import java.time.LocalDate;
 public class Tournament {
 
     private String id;
-    private User admin;
+    private String admin;
     private LocalDate startDate;
     private LocalDate endDate;
     private int nbTeams;
     private int teamSize;
     private String name;
 
-    public Tournament(String id, User admin, LocalDate startDate, LocalDate endDate, int nbTeams, int teamSize, String name) {
+    public Tournament(String id, String admin, LocalDate startDate, LocalDate endDate, int nbTeams, int teamSize, String name) {
         this.id = id;
         this.admin = admin;
         this.startDate = startDate;
@@ -32,8 +32,8 @@ public class Tournament {
         this.id = id;
     }
 
-    public void setAdmin(User user) {
-        this.admin = user;
+    public void setAdmin(String admin) {
+        this.admin = admin;
     }
 
     public void setStartDate(LocalDate startDate) {
