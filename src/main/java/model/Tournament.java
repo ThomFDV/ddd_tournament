@@ -4,12 +4,17 @@ import java.time.LocalDate;
 
 public class Tournament {
 
+    private String id;
     private User admin;
     private LocalDate startDate;
     private LocalDate endDate;
     private int nbTeams;
     private int teamSize;
     private String name;
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public void setAdmin(User user) {
         this.admin = user;
@@ -37,5 +42,9 @@ public class Tournament {
 
     public void save() {
 
+    }
+
+    public String getId() {
+        return id;
     }
 }
