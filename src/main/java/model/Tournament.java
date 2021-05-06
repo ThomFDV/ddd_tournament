@@ -12,6 +12,22 @@ public class Tournament {
     private int teamSize;
     private String name;
 
+    public Tournament(String id, User admin, LocalDate startDate, LocalDate endDate, int nbTeams, int teamSize, String name) {
+        this.id = id;
+        this.admin = admin;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.nbTeams = nbTeams;
+        this.teamSize = teamSize;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Tournament() {}
+
     public void setId(String id) {
         this.id = id;
     }

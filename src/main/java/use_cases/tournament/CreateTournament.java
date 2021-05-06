@@ -1,11 +1,18 @@
 package use_cases.tournament;
 
 import model.Tournament;
+import model.TournamentRepository;
 import model.User;
 
 import java.time.LocalDate;
 
 public class CreateTournament {
+    private TournamentRepository tournaments;
+
+    public CreateTournament(TournamentRepository tournamentRepository) {
+        this.tournaments = tournamentRepository;
+    }
+
     public Tournament initiate(int nbTeams, int teamSize, String tournamentName, LocalDate startDate, LocalDate endDate, User admin){
 
         if (nbTeams <= 0 || nbTeams % 2 != 0) {
@@ -34,7 +41,7 @@ public class CreateTournament {
         tournament.setEndDate(endDate);
         tournament.setNbTeam(nbTeams);
         tournament.setTeamSize(teamSize);
-        tournament.save();
+        this.tournaments.save(tournament);
 
         return tournament;
     }

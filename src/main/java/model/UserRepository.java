@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Optional;
+
 public interface UserRepository {
-    User getUser(String id);
+    Optional<User> getUser(String id);
 }

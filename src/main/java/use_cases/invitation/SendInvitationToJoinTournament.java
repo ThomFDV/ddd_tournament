@@ -7,9 +7,11 @@ import java.util.Optional;
 public class SendInvitationToJoinTournament {
 
     private final TournamentRepository tournaments;
+    private final UserRepository users;
 
-    public SendInvitationToJoinTournament(TournamentRepository tournaments) {
+    public SendInvitationToJoinTournament(TournamentRepository tournaments, UserRepository userRepository) {
         this.tournaments = tournaments;
+        this.users = userRepository;
     }
 
     public Invitation SendInvitation(
@@ -27,12 +29,12 @@ public class SendInvitationToJoinTournament {
             Team team = TeamRepository.getTeam(receiverId);
             invitation.setReceiver(team);
         } else {
-            User user = UserRepository.getUser(receiverId);
+            Optional<User> user = users.getUser(receiverId);
             invitation.setReceiver(user);
         }
 
-        User sender = UserRepository.getUser(senderId);
-        invitation.setSender(sender);
+        Optional<User> sender = users.getUser(senderId);
+        invitation.setSender(sender.get());
 
         if (!invitationMessage.isPresent()) invitation.setMessage(invitationMessage.get());
 

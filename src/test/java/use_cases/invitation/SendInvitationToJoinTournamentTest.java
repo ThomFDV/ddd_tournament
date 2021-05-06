@@ -1,10 +1,8 @@
 package use_cases.invitation;
 
 import mock.MockTournamentRepository;
-import model.Invitation;
-import model.ReceiverType;
-import model.TournamentRepository;
-import model.User;
+import mock.MockUserRepository;
+import model.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,15 +13,18 @@ import java.util.Optional;
 public class SendInvitationToJoinTournamentTest {
 
     private TournamentRepository tournaments;
+    private UserRepository users;
 
     @Before
     public void init() {
         this.tournaments = new MockTournamentRepository();
+        this.users = new MockUserRepository();
     }
 
     @Test
     public void should_send_invitation() {
-        SendInvitationToJoinTournament invitationSender = new SendInvitationToJoinTournament(tournaments);
+//        tournaments.add(new Tournament("1", "1", LocalDate));
+        SendInvitationToJoinTournament invitationSender = new SendInvitationToJoinTournament(tournaments, users);
         Invitation sendedInvitation = invitationSender.SendInvitation("1", "2", ReceiverType.USER, "3", Optional.of("Tu vas perdre"));
 
         Assert.assertEquals(sendedInvitation.getClass(), Invitation.class);

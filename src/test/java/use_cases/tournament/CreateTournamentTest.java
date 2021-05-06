@@ -1,5 +1,6 @@
 package use_cases.tournament;
 
+import mock.MockTournamentRepository;
 import model.Tournament;
 import model.User;
 import org.junit.Assert;
@@ -29,8 +30,13 @@ public class CreateTournamentTest {
         this.nbTeams = 4;
         this.teamSize = 5;
         this.name = "Tournament de fou";
-        Tournament tournament = new CreateTournament().initiate(this.nbTeams,
+        Tournament tournament = new CreateTournament(new MockTournamentRepository()).initiate(this.nbTeams,
                 this.teamSize, this.name, this.startDate, this.endDate, this.user);
-        Assert.assertEquals(tournament.getClass(), Tournament.class);
+        Assert.assertEquals(tournament.getName(), this.name);
+    }
+
+    @Test
+    public void should_throw_exception() {
+        this.nbTeams = -4;
     }
 }

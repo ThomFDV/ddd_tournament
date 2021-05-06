@@ -3,6 +3,10 @@ package mock;
 import model.User;
 import model.UserRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 public class MockUserRepository implements UserRepository {
     public List<User> users;
 

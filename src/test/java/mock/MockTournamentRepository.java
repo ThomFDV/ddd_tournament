@@ -14,12 +14,18 @@ public class MockTournamentRepository implements TournamentRepository {
         tournaments = new ArrayList<Tournament>();
     }
 
-    public void addTournament(Tournament tournament) {
+    @Override
+    public void add(Tournament tournament) {
         tournaments.add(tournament);
     }
 
-    @java.lang.Override
+    @Override
     public Optional<Tournament> getTournament(String id) {
         return tournaments.stream().filter(tournament -> tournament.getId() == id).findFirst();
+    }
+
+    @Override
+    public void save(Tournament tournament) {
+
     }
 }
