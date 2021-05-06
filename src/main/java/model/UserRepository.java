@@ -1,7 +1,5 @@
 package model;
 
-public class UserRepository {
-    public static User getUser(String id) {
-        return new User();
-    }
+public interface UserRepository {
+    User getUser(String id);
 }

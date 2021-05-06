@@ -18,9 +18,8 @@ public class MockTournamentRepository implements TournamentRepository {
         tournaments.add(tournament);
     }
 
+    @java.lang.Override
     public Optional<Tournament> getTournament(String id) {
-        return tournaments.stream().filter(tournament -> {
-            return tournament.getId() == id;
-        }).findFirst();
+        return tournaments.stream().filter(tournament -> tournament.getId() == id).findFirst();
     }
 }
