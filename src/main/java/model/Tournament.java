@@ -13,6 +13,25 @@ public class Tournament {
     private String name;
 
     public Tournament(String id, String admin, LocalDate startDate, LocalDate endDate, int nbTeams, int teamSize, String name) {
+        if (nbTeams <= 0 || nbTeams % 2 != 0) {
+            throw new IllegalArgumentException("Le nombre d'équipes doit être pair et supérieur à 0");
+        }
+        if(teamSize <= 0) {
+            throw new IllegalArgumentException("La taille d'une équipe ne peut pas être nulle ou négative");
+        }
+
+        if(name.isEmpty()) {
+            throw new IllegalArgumentException("Le nom du tournoi doit être renseigné");
+        }
+
+        if(startDate == null || endDate == null) {
+            throw new IllegalArgumentException("Il faut renseigner la date de début et de fin du tournoi");
+        }
+
+        if(startDate.isAfter(endDate)) {
+            throw new IllegalArgumentException("La date de début ne peut pas être après la date de fin");
+        }
+
         this.id = id;
         this.admin = admin;
         this.startDate = startDate;
@@ -25,8 +44,6 @@ public class Tournament {
     public String getName() {
         return name;
     }
-
-    public Tournament() {}
 
     public void setId(String id) {
         this.id = id;

@@ -5,6 +5,7 @@ import model.TournamentRepository;
 import model.User;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class CreateTournament {
     private TournamentRepository tournaments;
@@ -13,36 +14,11 @@ public class CreateTournament {
         this.tournaments = tournamentRepository;
     }
 
-    public Tournament initiate(int nbTeams, int teamSize, String tournamentName, LocalDate startDate, LocalDate endDate, User admin){
+    public Tournament initiate(int nbTeams, int teamSize, String tournamentName, LocalDate startDate, LocalDate endDate, User admin) {
+        String adminId = admin.getId();
 
-        if (nbTeams <= 0 || nbTeams % 2 != 0) {
-            throw new IllegalArgumentException("Le nombre d'équipes doit être pair et supérieur à 0");
-        }
-        if(teamSize <= 0) {
-            throw new IllegalArgumentException("La taille d'une équipe ne peut pas être nulle ou négative");
-        }
-
-        if(tournamentName.isEmpty()) {
-            throw new IllegalArgumentException("Le nom du tournoi doit être renseigné");
-        }
-
-        if(startDate == null || endDate == null) {
-            throw new IllegalArgumentException("Il faut renseigner la date de début et de fin du tournoi");
-        }
-
-        if(startDate.isAfter(endDate)) {
-            throw new IllegalArgumentException("La date de début ne peut pas être après la date de fin");
-        }
-
-        Tournament tournament = new Tournament();
-        tournament.setAdmin(admin.getId());
-        tournament.setName(tournamentName);
-        tournament.setStartDate(startDate);
-        tournament.setEndDate(endDate);
-        tournament.setNbTeam(nbTeams);
-        tournament.setTeamSize(teamSize);
+        Tournament tournament = new Tournament(UUID.randomUUID().toString(), adminId, startDate, endDate, nbTeams, teamSize, tournamentName);
         this.tournaments.save(tournament);
-
         return tournament;
     }
 }
