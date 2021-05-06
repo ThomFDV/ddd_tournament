@@ -8,12 +8,12 @@ public class SendInvitationToJoinTournament {
 
     private final TournamentRepository tournaments;
     private final UserRepository users;
-    private final TeamRepository teamRepository;
+    private final TeamRepository teams;
 
     public SendInvitationToJoinTournament(TournamentRepository tournaments, UserRepository userRepository, TeamRepository teamRepository) {
         this.tournaments = tournaments;
         this.users = userRepository;
-        this.teamRepository = teamRepository;
+        this.teams = teamRepository;
     }
 
     public Invitation SendInvitation(
@@ -28,7 +28,7 @@ public class SendInvitationToJoinTournament {
         invitation.setTournament(tournament);
 
         if (receiverType == ReceiverType.TEAM) {
-            Team team = TeamRepository.getTeam(receiverId);
+            Optional<Team> team = this.teams.getTeam(receiverId);
             invitation.setReceiver(team);
         } else {
             Optional<User> user = users.getUser(receiverId);
