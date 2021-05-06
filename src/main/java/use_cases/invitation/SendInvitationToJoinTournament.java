@@ -5,6 +5,13 @@ import model.*;
 import java.util.Optional;
 
 public class SendInvitationToJoinTournament {
+
+    private final TournamentRepository tournaments;
+
+    public SendInvitationToJoinTournament(TournamentRepository tournaments) {
+        this.tournaments = tournaments;
+    }
+
     public Invitation SendInvitation(
             String tournamentId,
             String receiverId,
@@ -13,7 +20,7 @@ public class SendInvitationToJoinTournament {
             Optional<String> invitationMessage
     ) {
         Invitation invitation = new Invitation();
-        Tournament tournament = TournamentRepository.getTournament(tournamentId);
+        Tournament tournament = this.tournaments.getTournament(tournamentId).get();
         invitation.setTournament(tournament);
 
         if (receiverType == ReceiverType.TEAM) {
