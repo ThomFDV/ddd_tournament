@@ -35,8 +35,13 @@ public class CreateTournamentTest {
         Assert.assertEquals(tournament.getName(), this.name);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void should_throw_exception() {
         this.nbTeams = -4;
+        this.teamSize = 5;
+        this.name = "Tournament de fou";
+
+        new CreateTournament(new MockTournamentRepository()).initiate(this.nbTeams,
+                this.teamSize, this.name, this.startDate, this.endDate, this.user);
     }
 }

@@ -14,7 +14,7 @@ public class CreateTournament {
         this.tournaments = tournamentRepository;
     }
 
-    public Tournament initiate(int nbTeams, int teamSize, String tournamentName, LocalDate startDate, LocalDate endDate, User admin) {
+    public Tournament initiate(int nbTeams, int teamSize, String tournamentName, LocalDate startDate, LocalDate endDate, User admin) throws IllegalArgumentException {
         String adminId = admin.getId();
 
         Tournament tournament = new Tournament(UUID.randomUUID().toString(), adminId, startDate, endDate, nbTeams, teamSize, tournamentName);
