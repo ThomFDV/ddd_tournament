@@ -8,10 +8,12 @@ public class SendInvitationToJoinTournament {
 
     private final TournamentRepository tournaments;
     private final UserRepository users;
+    private final TeamRepository teamRepository;
 
-    public SendInvitationToJoinTournament(TournamentRepository tournaments, UserRepository userRepository) {
+    public SendInvitationToJoinTournament(TournamentRepository tournaments, UserRepository userRepository, TeamRepository teamRepository) {
         this.tournaments = tournaments;
         this.users = userRepository;
+        this.teamRepository = teamRepository;
     }
 
     public Invitation SendInvitation(
