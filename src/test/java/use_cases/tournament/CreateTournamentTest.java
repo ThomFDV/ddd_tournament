@@ -46,4 +46,34 @@ public class CreateTournamentTest {
         new CreateTournament(new MockTournamentRepository()).initiate(this.nbTeams,
                 this.teamSize, this.name, this.startDate, this.endDate, this.user);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_exception_when_nbTeams_is_negative() {
+        this.nbTeams = -4;
+        this.teamSize = 5;
+        this.name = "Tournament de fou";
+
+        new CreateTournament(new MockTournamentRepository()).initiate(this.nbTeams,
+                this.teamSize, this.name, this.startDate, this.endDate, this.user);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_exception_when_teamSise_is_negative() {
+        this.nbTeams = 4;
+        this.teamSize = -5;
+        this.name = "Tournament de fou";
+
+        new CreateTournament(new MockTournamentRepository()).initiate(this.nbTeams,
+                this.teamSize, this.name, this.startDate, this.endDate, this.user);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_exception_when_name_is_empty() {
+        this.nbTeams = 4;
+        this.teamSize = 5;
+        this.name = "";
+
+        new CreateTournament(new MockTournamentRepository()).initiate(this.nbTeams,
+                this.teamSize, this.name, this.startDate, this.endDate, this.user);
+    }
 }

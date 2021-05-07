@@ -19,4 +19,9 @@ public class MockTeamRepository implements TeamRepository {
     public Optional<Team> getTeam(String teamId) {
         return this.teams.stream().filter(team -> team.getId() == teamId).findFirst();
     }
+
+    @Override
+    public void add(Team team) {
+        this.teams.add(team);
+    }
 }
