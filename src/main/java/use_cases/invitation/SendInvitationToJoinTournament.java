@@ -1,6 +1,12 @@
 package use_cases.invitation;
 
 import model.*;
+import model.invitation.Invitation;
+import model.invitation.InvitationRepository;
+import model.team.Team;
+import model.team.TeamRepository;
+import model.tournament.Tournament;
+import model.tournament.TournamentRepository;
 
 import java.util.Optional;
 

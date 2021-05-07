@@ -1,4 +1,4 @@
-package model;
+package model.invitation;
 
 public enum InvitationStatus {
     CREATED,

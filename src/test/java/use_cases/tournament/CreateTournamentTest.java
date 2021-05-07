@@ -1,8 +1,8 @@
 package use_cases.tournament;
 
 import mock.MockTournamentRepository;
-import model.Tournament;
-import model.TournamentStatus;
+import model.tournament.Tournament;
+import model.tournament.TournamentStatus;
 import model.User;
 import org.junit.Assert;
 import org.junit.Before;

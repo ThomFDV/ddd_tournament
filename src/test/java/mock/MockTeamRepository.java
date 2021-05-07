@@ -1,7 +1,7 @@
 package mock;
 
-import model.Team;
-import model.TeamRepository;
+import model.team.Team;
+import model.team.TeamRepository;
 
 import java.util.ArrayList;
 import java.util.List;

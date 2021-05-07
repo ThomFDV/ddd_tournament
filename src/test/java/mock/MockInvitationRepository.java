@@ -1,8 +1,8 @@
 package mock;
 
-import model.Invitation;
-import model.InvitationRepository;
-import model.InvitationStatus;
+import model.invitation.Invitation;
+import model.invitation.InvitationRepository;
+import model.invitation.InvitationStatus;
 
 import java.util.ArrayList;
 import java.util.List;

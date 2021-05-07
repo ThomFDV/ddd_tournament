@@ -1,7 +1,7 @@
 package mock;
 
-import model.Tournament;
-import model.TournamentRepository;
+import model.tournament.Tournament;
+import model.tournament.TournamentRepository;
 
 import java.util.ArrayList;
 import java.util.List;

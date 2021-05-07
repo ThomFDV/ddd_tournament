@@ -1,4 +1,9 @@
-package model;
+package model.invitation;
+
+import model.ReceiverType;
+import model.team.Team;
+import model.tournament.Tournament;
+import model.User;
 
 import java.util.Optional;
 import java.util.UUID;

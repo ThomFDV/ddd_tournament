@@ -1,11 +1,10 @@
 package use_cases.tournament;
 
-import model.Tournament;
-import model.TournamentRepository;
+import model.tournament.Tournament;
+import model.tournament.TournamentRepository;
 import model.User;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class CreateTournament {
     private TournamentRepository tournaments;

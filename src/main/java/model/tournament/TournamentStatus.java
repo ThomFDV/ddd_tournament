@@ -1,4 +1,4 @@
-package model;
+package model.tournament;
 
 public enum TournamentStatus {
     CREATED,

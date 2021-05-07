@@ -1,4 +1,4 @@
-package model;
+package model.team;
 
 import java.util.Optional;
 

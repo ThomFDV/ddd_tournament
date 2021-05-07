@@ -1,4 +1,4 @@
-package model;
+package model.tournament;
 
 import java.time.LocalDate;
 import java.util.UUID;
