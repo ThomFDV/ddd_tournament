@@ -9,11 +9,18 @@ public class SendInvitationToJoinTournament {
     private final TournamentRepository tournaments;
     private final UserRepository users;
     private final TeamRepository teams;
+    private final InvitationRepository invitation;
 
-    public SendInvitationToJoinTournament(TournamentRepository tournaments, UserRepository userRepository, TeamRepository teamRepository) {
+    public SendInvitationToJoinTournament(
+            TournamentRepository tournaments,
+            UserRepository userRepository,
+            TeamRepository teamRepository,
+            InvitationRepository invitationRepository
+    ) {
         this.tournaments = tournaments;
         this.users = userRepository;
         this.teams = teamRepository;
+        this.invitation = invitationRepository;
     }
 
     public Invitation SendInvitation(
@@ -23,24 +30,14 @@ public class SendInvitationToJoinTournament {
             String senderId,
             Optional<String> invitationMessage
     ) {
-        Invitation invitation = new Invitation();
         Tournament tournament = this.tournaments.getTournament(tournamentId).get();
-        invitation.setTournament(tournament);
-
-        if (receiverType == ReceiverType.TEAM) {
-            Optional<Team> team = this.teams.getTeam(receiverId);
-            invitation.setReceiver(team);
-        } else {
-            Optional<User> user = users.getUser(receiverId);
-            invitation.setReceiver(user);
-        }
-
         Optional<User> sender = users.getUser(senderId);
-        invitation.setSender(sender.get());
+        Optional<Team> team = this.teams.getTeam(receiverId);
+        Optional<User> user = users.getUser(receiverId);
 
-        if (!invitationMessage.isPresent()) invitation.setMessage(invitationMessage.get());
+        Invitation invitation = new Invitation(receiverType, invitationMessage, tournament, sender, team, user);
 
-        invitation.send();
+        this.invitation.send(invitation);
 
         return invitation;
     }

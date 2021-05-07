@@ -1,5 +1,6 @@
 package use_cases.invitation;
 
+import mock.MockInvitationRepository;
 import mock.MockTeamRepository;
 import mock.MockTournamentRepository;
 import mock.MockUserRepository;
@@ -16,12 +17,14 @@ public class SendInvitationToJoinTournamentTest {
     private TournamentRepository tournaments;
     private UserRepository users;
     private TeamRepository teams;
+    private InvitationRepository invitations;
 
     @Before
     public void init() {
         this.tournaments = new MockTournamentRepository();
         this.users = new MockUserRepository();
         this.teams = new MockTeamRepository();
+        this.invitations = new MockInvitationRepository();
     }
 
     @Test
@@ -37,7 +40,7 @@ public class SendInvitationToJoinTournamentTest {
                 ));
         this.users.add(new User("3"));
         this.users.add(new User("2"));
-        SendInvitationToJoinTournament invitationSender = new SendInvitationToJoinTournament(tournaments, users, teams);
+        SendInvitationToJoinTournament invitationSender = new SendInvitationToJoinTournament(tournaments, users, teams, invitations);
         String tournamentId = "1";
         Invitation sentInvitation = invitationSender.SendInvitation(tournamentId, "2", ReceiverType.USER, "3", Optional.of("Tu vas perdre"));
 

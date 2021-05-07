@@ -1,23 +1,25 @@
 package model;
 
+import java.util.Optional;
+
 public class Invitation {
 
     private Tournament tournament;
-
-    public void setTournament(Tournament tournament) {
+    private Object receiver;
+    private User sender;
+    private String message;
+    public Invitation(ReceiverType receiverType, Optional<String> invitationMessage, Tournament tournament, Optional<User> sender, Optional<Team> team, Optional<User> user) {
         this.tournament = tournament;
-    }
+        if (receiverType == ReceiverType.TEAM) {
+            this.receiver = team;
+        } else {
+            this.receiver = user;
+        }
+        this.sender = sender.get();
 
-    public void setReceiver(Object receiver) {
-
-    }
-
-    public void setSender(User user) {
-
-    }
-
-    public void setMessage(String message) {
-
+        if (!invitationMessage.isPresent()) {
+            this.message = invitationMessage.get();
+        }
     }
 
     public void send() {

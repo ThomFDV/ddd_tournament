@@ -45,34 +45,6 @@ public class Tournament {
         return name;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setAdmin(String admin) {
-        this.admin = admin;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public void setNbTeam(int nbTeams) {
-        this.nbTeams = nbTeams;
-    }
-
-    public void setTeamSize(int teamSize) {
-        this.teamSize = teamSize;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void save() {
 
     }
