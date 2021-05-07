@@ -36,7 +36,7 @@ public class SendInvitationToJoinTournament {
             String senderId,
             Optional<String> invitationMessage
     ) {
-        Tournament tournament = this.tournaments.getTournament(tournamentId).get();
+        Optional<Tournament> tournament = this.tournaments.getTournament(tournamentId);
         Optional<User> sender = users.getUser(senderId);
         Optional<Team> team = this.teams.getTeam(receiverId);
         Optional<User> user = users.getUser(receiverId);
