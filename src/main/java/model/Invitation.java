@@ -7,7 +7,7 @@ public class Invitation {
     private Tournament tournament;
     private Object receiver;
     private User sender;
-    private String message;
+    private InvitationMessage message;
     public Invitation(ReceiverType receiverType, Optional<String> invitationMessage, Tournament tournament, Optional<User> sender, Optional<Team> team, Optional<User> user) {
         this.tournament = tournament;
         if (receiverType == ReceiverType.TEAM) {
@@ -17,9 +17,7 @@ public class Invitation {
         }
         this.sender = sender.get();
 
-        if (!invitationMessage.isPresent()) {
-            this.message = invitationMessage.get();
-        }
+        this.message = new InvitationMessage(invitationMessage);
     }
 
     public void send() {
