@@ -28,4 +28,9 @@ public class InvitationMessage {
         InvitationMessage im = (InvitationMessage) obj;
         return im.getValue().equals(this.getValue());
     }
+
+    @Override
+    public int hashCode() {
+        return this.value.hashCode();
+    }
 }
