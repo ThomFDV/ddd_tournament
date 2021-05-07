@@ -2,6 +2,7 @@ package mock;
 
 import model.Invitation;
 import model.InvitationRepository;
+import model.InvitationStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ public class MockInvitationRepository implements InvitationRepository {
 
     @Override
     public void send(Invitation invitation) {
+        invitation.setStatus(InvitationStatus.SENDED);
         this.invitations.add(invitation);
     }
 

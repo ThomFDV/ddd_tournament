@@ -2,6 +2,7 @@ package use_cases.tournament;
 
 import mock.MockTournamentRepository;
 import model.Tournament;
+import model.TournamentStatus;
 import model.User;
 import org.junit.Assert;
 import org.junit.Before;
@@ -32,7 +33,8 @@ public class CreateTournamentTest {
         this.name = "Tournament de fou";
         Tournament tournament = new CreateTournament(new MockTournamentRepository()).initiate(this.nbTeams,
                 this.teamSize, this.name, this.startDate, this.endDate, this.user);
-        Assert.assertEquals(tournament.getName(), this.name);
+
+        Assert.assertEquals(tournament.getStatus(), TournamentStatus.CREATED);
     }
 
     @Test(expected = IllegalArgumentException.class)

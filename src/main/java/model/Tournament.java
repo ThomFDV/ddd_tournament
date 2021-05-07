@@ -1,7 +1,9 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
+// Entity
 public class Tournament {
 
     private String id;
@@ -12,7 +14,9 @@ public class Tournament {
     private int teamSize;
     private String name;
 
-    public Tournament(String id, String admin, LocalDate startDate, LocalDate endDate, int nbTeams, int teamSize, String name) {
+    private TournamentStatus status;
+
+    public Tournament(String admin, LocalDate startDate, LocalDate endDate, int nbTeams, int teamSize, String name) {
         if (nbTeams <= 0 || nbTeams % 2 != 0) {
             throw new IllegalArgumentException("Le nombre d'équipes doit être pair et supérieur à 0");
         }
@@ -32,24 +36,26 @@ public class Tournament {
             throw new IllegalArgumentException("La date de début ne peut pas être après la date de fin");
         }
 
-        this.id = id;
+        this.id = UUID.randomUUID().toString();
         this.admin = admin;
         this.startDate = startDate;
         this.endDate = endDate;
         this.nbTeams = nbTeams;
         this.teamSize = teamSize;
         this.name = name;
+
+        this.status = TournamentStatus.CREATED;
     }
 
     public String getName() {
         return name;
     }
 
-    public void save() {
-
+    public String getId() {
+        return this.id;
     }
 
-    public String getId() {
-        return id;
+    public TournamentStatus getStatus() {
+        return this.status;
     }
 }
